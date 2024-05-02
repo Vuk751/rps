@@ -6,8 +6,78 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        
-    </script>
+
+    <p id="gas"></p>
+
+
+<script>
+let compChoice = ["rock", "paper", "scissors"];
+
+function getCompChoice() {
+    let choice = compChoice[Math.floor(Math.random() * compChoice.length)];
+    console.log('Computer chose ' + choice);
+    return choice;
+   
+}
+
+function getHumanChoice(){
+    let choice;
+    do {
+        choice = prompt('RPS Select').toLowerCase();
+    } while (!compChoice.includes(choice)); // Ensure user's choice is valid
+    console.log('You chose ' + choice);
+    return choice;
+}
+
+
+
+function comparison(){
+    let humChoice = getHumanChoice();
+    let computerChoice = getCompChoice();
+
+
+    if (humChoice.toLowerCase() === computerChoice){
+        console.log('It\s a tie.');
+    }
+
+    else if((humChoice == 'scissors') && (computerChoice == 'paper') || (humChoice == 'paper') && (computerChoice == 'rock') || (humChoice == 'rock') && (computerChoice == 'scissors')){
+        console.log('You win. ' + humChoice + ' beats ' + computerChoice)
+
+    }
+
+    else {
+        console.log('You lose. ' + computerChoice + ' beats ' + humChoice)
+    }
+
+
+}
+
+comparison();
+
+
+
+// let compChoice = ["rock", "paper",
+//     "scissors"];
+ 
+// function getCompChoice() {
+//     console.log (compChoice[(Math.floor(Math.random() * compChoice.length))]);  
+//     return String(compChoice);
+//     }
+
+// const compResult = (getCompChoice());
+
+
+// function getHumChoice(){
+//     let humChoice = prompt('RPS Select');
+//     console.log(humChoice);
+//     return String(humChoice);
+    
+// }
+// const humResult = (getHumChoice());
+
+// console.log(humResult === compResult);
+
+
+</script>
 </body>
 </html>
