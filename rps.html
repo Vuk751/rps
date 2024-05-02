@@ -11,97 +11,48 @@
 
 
 <script>
-let compChoice = ["rock", "paper", "scissors"];
 
-function getCompChoice() {
+
+function getCompChoice(){
+    let compChoice = ['rock', 'paper', 'scissors'];
     let choice = compChoice[Math.floor(Math.random() * compChoice.length)];
     console.log('Computer chose ' + choice);
     return choice;
-   
 }
 
-function getHumanChoice(){
-    let choice = prompt('RPS Select').toLowerCase();
-    if (choice === "rock" || choice === "scissors" || choice === "paper"){
-        console.log('You chose ' + choice);
-        return choice;
+
+function getHumChoice(){
+    let humChoice = prompt('RPS Select').toLowerCase();
+    console.log('You chose ' + humChoice);
+    return humChoice;
+}
+
+
+
+function theGameItself(){
+    let humanPicked = getHumChoice();
+    let computerPicked = getCompChoice();
+
+    if (humanPicked === computerPicked){
+        console.log('It\'s a tie');
     }
 
+    else if ((humanPicked == 'rock' && computerPicked === 'scissors') || (humanPicked == 'scissors' && computerPicked === 'paper') || (humanPicked == 'paper' && computerPicked === 'rock')){
+        console.log('You win. ' + (humanPicked[0].toUpperCase() + humanPicked.slice(1)) + ' beats ' + computerPicked + '.' );  
+    }
+    else if(humanPicked !== 'rock' || humanPicked !== 'scissors' || humanPicked !== 'paper'){
+        console.log ('You lose. Invalid option.');
+    }
     else {
+        console.log('You lose.' + (computerPicked[0].toUpperCase() + computerPicked.slice(1)) + 'beats ' + humanPicked + '.' )
+    }
+
         
-        console.log(choice + ' is not a valid option' );
-        return null;
-    }
-    
-    
-    
     
 }
 
+theGameItself();
 
-
-function comparison(){
-    let humChoice = getHumanChoice();
-    let computerChoice = getCompChoice();
-
-
-    if (humChoice.toLowerCase() === computerChoice){
-        console.log('It\'s a tie.');
-        return 'tie';
-    }
-
-    else if((humChoice == 'scissors') && (computerChoice == 'paper') || (humChoice == 'paper') && (computerChoice == 'rock') || (humChoice == 'rock') && (computerChoice == 'scissors')){
-        console.log('You win. ' + (humChoice[0].toUpperCase() + humChoice.slice(1)) + ' beats ' + computerChoice + '.');
-        return 'win';
-    }
-
-    else {
-        console.log('You lose. ' + (computerChoice[0].toUpperCase() + computerChoice.slice(1)) + ' beats ' + humChoice + '.');
-        return 'lose';
-    }
-
-
-}
-
-comparison();
-
-function ultimateComparison(){
-    let computerChoice = getCompChoice();
-    let humChoice = getHumanChoice();
-
-    if (humChoice !== null) { // Check if the human choice is valid
-        console.log(comparison(humChoice, computerChoice));
-    } else {
-        console.log('Invalid choice. Please choose rock, paper, or scissors.');
-    }
-
-    console.log(comparison(humChoice, computerChoice));
-}AAAAAAAAAA
-
-ultimateComparison();
-
-
-
-// let compChoice = ["rock", "paper",
-//     "scissors"];
- 
-// function getCompChoice() {
-//     console.log (compChoice[(Math.floor(Math.random() * compChoice.length))]);  
-//     return String(compChoice);
-//     }
-
-// const compResult = (getCompChoice());
-
-
-// function getHumChoice(){
-//     let humChoice = prompt('RPS Select');
-//     console.log(humChoice);
-//     return String(humChoice);
-    
-// }
-// const humResult = (getHumChoice());
-
-// console.log(humResult === compResult);
 
 
 </script>
