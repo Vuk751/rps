@@ -21,12 +21,21 @@ function getCompChoice() {
 }
 
 function getHumanChoice(){
-    let choice;
-    do {
-        choice = prompt('RPS Select').toLowerCase();
-    } while (!compChoice.includes(choice)); // Ensure user's choice is valid
-    console.log('You chose ' + choice);
-    return choice;
+    let choice = prompt('RPS Select').toLowerCase();
+    if (choice === "rock" || choice === "scissors" || choice === "paper"){
+        console.log('You chose ' + choice);
+        return choice;
+    }
+
+    else {
+        
+        console.log(choice + ' is not a valid option' );
+        return null;
+    }
+    
+    
+    
+    
 }
 
 
@@ -37,22 +46,39 @@ function comparison(){
 
 
     if (humChoice.toLowerCase() === computerChoice){
-        console.log('It\s a tie.');
+        console.log('It\'s a tie.');
+        return 'tie';
     }
 
     else if((humChoice == 'scissors') && (computerChoice == 'paper') || (humChoice == 'paper') && (computerChoice == 'rock') || (humChoice == 'rock') && (computerChoice == 'scissors')){
-        console.log('You win. ' + humChoice + ' beats ' + computerChoice)
-
+        console.log('You win. ' + (humChoice[0].toUpperCase() + humChoice.slice(1)) + ' beats ' + computerChoice + '.');
+        return 'win';
     }
 
     else {
-        console.log('You lose. ' + computerChoice + ' beats ' + humChoice)
+        console.log('You lose. ' + (computerChoice[0].toUpperCase() + computerChoice.slice(1)) + ' beats ' + humChoice + '.');
+        return 'lose';
     }
 
 
 }
 
 comparison();
+
+function ultimateComparison(){
+    let computerChoice = getCompChoice();
+    let humChoice = getHumanChoice();
+
+    if (humChoice !== null) { // Check if the human choice is valid
+        console.log(comparison(humChoice, computerChoice));
+    } else {
+        console.log('Invalid choice. Please choose rock, paper, or scissors.');
+    }
+
+    console.log(comparison(humChoice, computerChoice));
+}AAAAAAAAAA
+
+ultimateComparison();
 
 
 
